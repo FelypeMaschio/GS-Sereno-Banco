@@ -1,0 +1,776 @@
+
+==================== PARTE 1 - MODELO RELACIONAL (DDL) ====================
+Removida   : SER_AUDITORIA
+Removida   : SER_REPORTE
+Removida   : SER_EQUIPAMENTO
+Removida   : SER_ESTACAO
+Removida   : SER_AVALIACAO
+Removida   : SER_LOCAL
+Removida   : SER_USUARIO
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+Table SER_USUARIO criado.
+
+
+Table SER_LOCAL criado.
+
+
+Table SER_AVALIACAO criado.
+
+
+Table SER_ESTACAO criado.
+
+
+Table SER_EQUIPAMENTO criado.
+
+
+Table SER_REPORTE criado.
+
+
+Table SER_AUDITORIA criado.
+
+
+Index IDX_AVAL_LOCAL_DATA criado.
+
+
+Index IDX_AVAL_USUARIO criado.
+
+
+Index IDX_EQUIP_ESTACAO_STATUS criado.
+
+
+Index IDX_REPORTE_EQUIP_DATA criado.
+
+
+Index IDX_REPORTE_USUARIO criado.
+
+
+Index IDX_LOCAL_CATEGORIA criado.
+
+
+Index IDX_AUD_TABELA_REGISTRO criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+Comment criado.
+
+
+TABLE_NAME                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------
+SER_AUDITORIA
+SER_AVALIACAO
+SER_EQUIPAMENTO
+SER_ESTACAO
+SER_LOCAL
+SER_REPORTE
+SER_USUARIO
+
+7 linhas selecionadas. 
+
+
+TABLE_NAME                                                                                                                       CONSTRAINT_NAME                                                                                                                  C
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -
+SER_AUDITORIA                                                                                                                    CK_AUD_COERENCIA                                                                                                                 C
+SER_AUDITORIA                                                                                                                    CK_AUD_OPERACAO                                                                                                                  C
+SER_AUDITORIA                                                                                                                    PK_SER_AUDITORIA                                                                                                                 P
+SER_AVALIACAO                                                                                                                    CK_AVAL_LOTACAO                                                                                                                  C
+SER_AVALIACAO                                                                                                                    CK_AVAL_LUMINOSIDADE                                                                                                             C
+SER_AVALIACAO                                                                                                                    CK_AVAL_RUIDO                                                                                                                    C
+SER_AVALIACAO                                                                                                                    PK_SER_AVALIACAO                                                                                                                 P
+SER_AVALIACAO                                                                                                                    FK_AVAL_LOCAL                                                                                                                    R
+SER_AVALIACAO                                                                                                                    FK_AVAL_USUARIO                                                                                                                  R
+SER_EQUIPAMENTO                                                                                                                  CK_EQUIP_STATUS                                                                                                                  C
+SER_EQUIPAMENTO                                                                                                                  CK_EQUIP_TIPO                                                                                                                    C
+
+TABLE_NAME                                                                                                                       CONSTRAINT_NAME                                                                                                                  C
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -
+SER_EQUIPAMENTO                                                                                                                  PK_SER_EQUIPAMENTO                                                                                                               P
+SER_EQUIPAMENTO                                                                                                                  FK_EQUIP_ESTACAO                                                                                                                 R
+SER_ESTACAO                                                                                                                      CK_ESTACAO_LATITUDE                                                                                                              C
+SER_ESTACAO                                                                                                                      CK_ESTACAO_LONGITUDE                                                                                                             C
+SER_ESTACAO                                                                                                                      PK_SER_ESTACAO                                                                                                                   P
+SER_ESTACAO                                                                                                                      UK_ESTACAO_NOME_LINHA                                                                                                            U
+SER_LOCAL                                                                                                                        CK_LOCAL_CATEGORIA                                                                                                               C
+SER_LOCAL                                                                                                                        CK_LOCAL_INDICE                                                                                                                  C
+SER_LOCAL                                                                                                                        CK_LOCAL_LATITUDE                                                                                                                C
+SER_LOCAL                                                                                                                        CK_LOCAL_LONGITUDE                                                                                                               C
+SER_LOCAL                                                                                                                        PK_SER_LOCAL                                                                                                                     P
+
+TABLE_NAME                                                                                                                       CONSTRAINT_NAME                                                                                                                  C
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- -
+SER_LOCAL                                                                                                                        UK_LOCAL_NOME_END                                                                                                                U
+SER_REPORTE                                                                                                                      CK_REPORTE_STATUS                                                                                                                C
+SER_REPORTE                                                                                                                      PK_SER_REPORTE                                                                                                                   P
+SER_REPORTE                                                                                                                      FK_REPORTE_EQUIP                                                                                                                 R
+SER_REPORTE                                                                                                                      FK_REPORTE_USUARIO                                                                                                               R
+SER_USUARIO                                                                                                                      CK_USUARIO_BAIXO_EST                                                                                                             C
+SER_USUARIO                                                                                                                      CK_USUARIO_EMAIL_FMT                                                                                                             C
+SER_USUARIO                                                                                                                      CK_USUARIO_PAPEL                                                                                                                 C
+SER_USUARIO                                                                                                                      PK_SER_USUARIO                                                                                                                   P
+SER_USUARIO                                                                                                                      UK_USUARIO_EMAIL                                                                                                                 U
+
+32 linhas selecionadas. 
+
+
+TABLE_NAME                                                                                                                       INDEX_NAME                                                                                                                       UNIQUENES
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ---------
+SER_AUDITORIA                                                                                                                    IDX_AUD_TABELA_REGISTRO                                                                                                          NONUNIQUE
+SER_AUDITORIA                                                                                                                    PK_SER_AUDITORIA                                                                                                                 UNIQUE   
+SER_AVALIACAO                                                                                                                    IDX_AVAL_LOCAL_DATA                                                                                                              NONUNIQUE
+SER_AVALIACAO                                                                                                                    IDX_AVAL_USUARIO                                                                                                                 NONUNIQUE
+SER_AVALIACAO                                                                                                                    PK_SER_AVALIACAO                                                                                                                 UNIQUE   
+SER_EQUIPAMENTO                                                                                                                  IDX_EQUIP_ESTACAO_STATUS                                                                                                         NONUNIQUE
+SER_EQUIPAMENTO                                                                                                                  PK_SER_EQUIPAMENTO                                                                                                               UNIQUE   
+SER_ESTACAO                                                                                                                      PK_SER_ESTACAO                                                                                                                   UNIQUE   
+SER_ESTACAO                                                                                                                      UK_ESTACAO_NOME_LINHA                                                                                                            UNIQUE   
+SER_LOCAL                                                                                                                        IDX_LOCAL_CATEGORIA                                                                                                              NONUNIQUE
+SER_LOCAL                                                                                                                        PK_SER_LOCAL                                                                                                                     UNIQUE   
+
+TABLE_NAME                                                                                                                       INDEX_NAME                                                                                                                       UNIQUENES
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ---------
+SER_LOCAL                                                                                                                        UK_LOCAL_NOME_END                                                                                                                UNIQUE   
+SER_REPORTE                                                                                                                      IDX_REPORTE_EQUIP_DATA                                                                                                           NONUNIQUE
+SER_REPORTE                                                                                                                      IDX_REPORTE_USUARIO                                                                                                              NONUNIQUE
+SER_REPORTE                                                                                                                      PK_SER_REPORTE                                                                                                                   UNIQUE   
+SER_USUARIO                                                                                                                      PK_SER_USUARIO                                                                                                                   UNIQUE   
+SER_USUARIO                                                                                                                      UK_USUARIO_EMAIL                                                                                                                 UNIQUE   
+
+17 linhas selecionadas. 
+
+
+==================== PARTE 2 - DADOS DE TESTE ====================
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+0 linhas excluído.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+
+1 linha inserido.
+
+Commit concluído.
+
+Table SER_USUARIO alterado.
+
+
+Table SER_LOCAL alterado.
+
+
+Table SER_AVALIACAO alterado.
+
+
+Table SER_ESTACAO alterado.
+
+
+Table SER_EQUIPAMENTO alterado.
+
+
+Table SER_REPORTE alterado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+TABELA                 QTD
+--------------- ----------
+SER_USUARIO              5
+SER_LOCAL                6
+SER_AVALIACAO           20
+SER_ESTACAO              5
+SER_EQUIPAMENTO         12
+SER_REPORTE             10
+
+6 linhas selecionadas. 
+
+
+==================== PARTE 3 - PACOTES (FUNCOES E PROCEDIMENTOS) ====================
+Pacote removido: PKG_ACESSIBILIDADE
+Pacote removido: PKG_CALMARIA
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+Package PKG_CALMARIA compilado
+
+
+Package Body PKG_CALMARIA compilado
+
+
+Package PKG_ACESSIBILIDADE compilado
+
+
+Package Body PKG_ACESSIBILIDADE compilado
+
+
+OBJECT_NAME                                                                                                                      OBJECT_TYPE             STATUS 
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------- -------
+PKG_ACESSIBILIDADE                                                                                                               PACKAGE                 VALID  
+PKG_ACESSIBILIDADE                                                                                                               PACKAGE BODY            VALID  
+PKG_CALMARIA                                                                                                                     PACKAGE                 VALID  
+PKG_CALMARIA                                                                                                                     PACKAGE BODY            VALID  
+
+nenhuma linha selecionada
+
+==================== PARTE 4 - GATILHOS ====================
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+Trigger TRG_AUD_AVALIACAO compilado
+
+
+Trigger TRG_REPORTE_ATUALIZA_STATUS compilado
+
+
+TRIGGER_NAME                                                                                                                     TRIGGERING_EVENT                                                                                                                                                                                                                                       TABLE_NAME                                                                                                                       STATUS   COMPILA
+-------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------------- -------- -------
+TRG_AUD_AVALIACAO                                                                                                                INSERT OR UPDATE OR DELETE                                                                                                                                                                                                                             SER_AVALIACAO                                                                                                                    ENABLED  VALID  
+TRG_REPORTE_ATUALIZA_STATUS                                                                                                      INSERT                                                                                                                                                                                                                                                 SER_REPORTE                                                                                                                      ENABLED  VALID  
+
+
+==================== PARTE 5 - BLOCOS ANONIMOS ====================
+=== LOCAIS CRITICOS (indice de calma < 40) ===
+Terminal Parque Dom Pedro II     | TRANSPORTE      | indice  19 | evite ir sem fone abafador
+Mercado Municipal de Sao Paulo   | MERCADO         | indice  28 | evite ir sem fone abafador
+Locais lidos pelo cursor: 6
+Total de criticos: 2 | sem avaliacoes: 0
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+=== ACESSIBILIDADE DAS ESTACOES ===
+Se           | 1-Azul / 3-Vermelha  | 2/3 funcionando (67%) -> PARCIAL  [ALERTA: elevador fora de operacao]
+Paraiso      | 1-Azul / 2-Verde     | 2/3 funcionando (67%) -> PARCIAL
+Luz          | 1-Azul / 4-Amarela   | 0/2 funcionando (0%) -> INACESSIVEL  [ALERTA: elevador fora de operacao]
+Consolacao   | 2-Verde              | 2/2 funcionando (100%) -> ACESSIVEL
+Butanta      | 4-Amarela            | 2/2 funcionando (100%) -> ACESSIVEL
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+==================== PARTE 6 - TESTES DOS PACOTES E GATILHOS ====================
+
+===================== PACOTE PKG_CALMARIA =====================
+T01 - fn_indice_calma(1) chamada de um SELECT (como a API Java faz). Esperado: 92
+
+INDICE_UBS_VILA_MARIANA
+-----------------------
+                     92
+
+T02 - indice gravado x indice recalculado pela funcao. Esperado: OK nas 6 linhas
+
+        ID NOME                                                                                                                        GRAVADO  CALCULADO CONFERE  
+---------- ------------------------------------------------------------------------------------------------------------------------ ---------- ---------- ---------
+         1 UBS Vila Mariana                                                                                                                 92         92 OK       
+         2 UBS Pinheiros                                                                                                                    58         58 OK       
+         3 Mercado Municipal de Sao Paulo                                                                                                   28         28 OK       
+         4 Terminal Parque Dom Pedro II                                                                                                     19         19 OK       
+         5 Parque Ibirapuera                                                                                                                72         72 OK       
+         6 Poupatempo Se                                                                                                                    50         50 OK       
+
+6 linhas selecionadas. 
+
+T03 - OK, erro esperado: ORA-20002: Local 999 nao encontrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T04 - Avaliacao 21 registrada. Indice do Poupatempo Se: 50 -> 63 (esperado 50 -> 63)
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T05 - OK, erro esperado: ORA-20001: Nota de ruido invalida (7). Use um numero inteiro de 1 (calmo) a 5 (intenso).
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T06 - OK, erro esperado: ORA-20002: Local 999 nao encontrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T07 - OK, erro esperado: ORA-20003: Usuario 999 nao encontrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T08 - OK, erro esperado: ORA-20004: A data da visita nao pode estar no futuro.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+
+================ GATILHO 1 - AUDITORIA (INSERT, UPDATE, DELETE) ================
+T09 - UPDATE na avaliacao 1 (ruido 1 -> 3)
+
+1 linha atualizado.
+
+T10 - DELETE da avaliacao 20
+
+1 linha excluído.
+
+T11 - LGPD: exclusao da conta do usuario 4
+
+1 linha excluído.
+
+Avaliacoes que ficaram anonimas (esperado: 4, 6, 11, 14, 18 com USUARIO_ID vazio)
+
+        ID   LOCAL_ID USUARIO_ID      RUIDO LUMINOSIDADE    LOTACAO
+---------- ---------- ---------- ---------- ------------ ----------
+         4          1                     1            2          1
+         6          2                     3            2          4
+        11          3                     4            3          5
+        14          4                     5            3          5
+        18          6                     3            2          4
+
+T12 - SER_AUDITORIA (data, operacao, valores antigos e novos)
+
+        ID TABELA                         OPERAC REGISTRO_ID USUARIO_BD                                                                                                                       DATA_HORA
+---------- ------------------------------ ------ ----------- -------------------------------------------------------------------------------------------------------------------------------- -------------------
+VALORES_ANTIGOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALORES_NOVOS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         1 SER_AVALIACAO                  INSERT          21 RM563009                                                                                                                         12/11/2026 12:36:16 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+local_id=6; usuario_id=2; ruido=1; luminosidade=1; lotacao=1; data_hora_visita=2026-11-12 10:36; comentario=Teste: agendamento das 7h, quase vazio.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+         2 SER_AVALIACAO                  UPDATE           1 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=1; usuario_id=1; ruido=1; luminosidade=2; lotacao=1; data_hora_visita=2026-10-06 08:15; comentario=Recepcao silenciosa logo cedo.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+local_id=1; usuario_id=1; ruido=3; luminosidade=2; lotacao=1; data_hora_visita=2026-10-06 08:15; comentario=Corrigido: tinha obra na rua.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+        ID TABELA                         OPERAC REGISTRO_ID USUARIO_BD                                                                                                                       DATA_HORA
+---------- ------------------------------ ------ ----------- -------------------------------------------------------------------------------------------------------------------------------- -------------------
+VALORES_ANTIGOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALORES_NOVOS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         3 SER_AVALIACAO                  DELETE          20 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=6; usuario_id=3; ruido=4; luminosidade=2; lotacao=4; data_hora_visita=2026-10-21 14:45; comentario=Senha demorou, ambiente agitado.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+         4 SER_AVALIACAO                  UPDATE           4 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=1; usuario_id=4; ruido=1; luminosidade=2; lotacao=1; data_hora_visita=2026-10-20 16:50; comentario=Pouca gente no fim da tarde.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+        ID TABELA                         OPERAC REGISTRO_ID USUARIO_BD                                                                                                                       DATA_HORA
+---------- ------------------------------ ------ ----------- -------------------------------------------------------------------------------------------------------------------------------- -------------------
+VALORES_ANTIGOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALORES_NOVOS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local_id=1; usuario_id=NULL; ruido=1; luminosidade=2; lotacao=1; data_hora_visita=2026-10-20 16:50; comentario=Pouca gente no fim da tarde.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+         5 SER_AVALIACAO                  UPDATE           6 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=2; usuario_id=4; ruido=3; luminosidade=2; lotacao=4; data_hora_visita=2026-10-09 11:10; comentario=Sala cheia e abafada.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+local_id=2; usuario_id=NULL; ruido=3; luminosidade=2; lotacao=4; data_hora_visita=2026-10-09 11:10; comentario=Sala cheia e abafada.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+         6 SER_AVALIACAO                  UPDATE          11 RM563009                                                                                                                         12/11/2026 12:36:17 
+
+        ID TABELA                         OPERAC REGISTRO_ID USUARIO_BD                                                                                                                       DATA_HORA
+---------- ------------------------------ ------ ----------- -------------------------------------------------------------------------------------------------------------------------------- -------------------
+VALORES_ANTIGOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALORES_NOVOS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local_id=3; usuario_id=4; ruido=4; luminosidade=3; lotacao=5; data_hora_visita=2026-10-18 12:30; comentario=NULL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+local_id=3; usuario_id=NULL; ruido=4; luminosidade=3; lotacao=5; data_hora_visita=2026-10-18 12:30; comentario=NULL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+         7 SER_AVALIACAO                  UPDATE          14 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=4; usuario_id=4; ruido=5; luminosidade=3; lotacao=5; data_hora_visita=2026-10-16 18:40; comentario=Onibus buzinando sem parar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+local_id=4; usuario_id=NULL; ruido=5; luminosidade=3; lotacao=5; data_hora_visita=2026-10-16 18:40; comentario=Onibus buzinando sem parar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+
+        ID TABELA                         OPERAC REGISTRO_ID USUARIO_BD                                                                                                                       DATA_HORA
+---------- ------------------------------ ------ ----------- -------------------------------------------------------------------------------------------------------------------------------- -------------------
+VALORES_ANTIGOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALORES_NOVOS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         8 SER_AVALIACAO                  UPDATE          18 RM563009                                                                                                                         12/11/2026 12:36:17 
+local_id=6; usuario_id=4; ruido=3; luminosidade=2; lotacao=4; data_hora_visita=2026-10-08 13:00; comentario=Horario de almoco cheio.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+local_id=6; usuario_id=NULL; ruido=3; luminosidade=2; lotacao=4; data_hora_visita=2026-10-08 13:00; comentario=Horario de almoco cheio.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
+
+8 linhas selecionadas. 
+
+Resumo da auditoria por operacao
+
+OPERAC        QTD
+------ ----------
+DELETE          1
+INSERT          1
+UPDATE          6
+
+
+=================== PACOTE PKG_ACESSIBILIDADE ===================
+T13 - fn_equipamentos_parados por estacao. Esperado: 1, 1, 2, 0, 0
+
+        ID NOME                                                                                                                     FORA_DE_OPERACAO
+---------- ------------------------------------------------------------------------------------------------------------------------ ----------------
+         1 Se                                                                                                                                      1
+         2 Paraiso                                                                                                                                 1
+         3 Luz                                                                                                                                     2
+         4 Consolacao                                                                                                                              0
+         5 Butanta                                                                                                                                 0
+
+T14 - OK, erro esperado: ORA-20007: Estacao 999 nao encontrada.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T15 - ANTES: status do equipamento 7 (esperado PARADO)
+
+        ID TIPO                 STATUS_ATUAL         ATUALIZADO_EM   
+---------- -------------------- -------------------- ----------------
+         7 ELEVADOR             PARADO               04/11/2026 17:30
+
+T15 - Reporte 11 registrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T15 - DEPOIS: status do equipamento 7 (esperado FUNCIONANDO, com data de agora)
+
+        ID TIPO                 STATUS_ATUAL         ATUALIZADO_EM   
+---------- -------------------- -------------------- ----------------
+         7 ELEVADOR             FUNCIONANDO          12/11/2026 12:36
+
+T16 - INSERT direto em SER_REPORTE (o gatilho atua igual)
+
+1 linha inserido.
+
+
+        ID TIPO                 STATUS_ATUAL        
+---------- -------------------- --------------------
+         8 ESCADA_ROLANTE       FUNCIONANDO         
+
+
+PARADOS_NA_LUZ_AGORA
+--------------------
+                   0
+
+T17 - OK, erro esperado: ORA-20006: Status "QUEBRADO" invalido. Use FUNCIONANDO, PARADO ou EM_MANUTENCAO.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T18 - OK, erro esperado: ORA-20005: Equipamento 999 nao encontrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T19 - OK, erro esperado: ORA-20003: Usuario 999 nao encontrado.
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+T20 - Posso ir agora? (um resultado por local)
+
+        ID
+----------
+POSSO_IR_AGORA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         1 
+UBS Vila Mariana: CALMO (indice 92) | Estacao mais proxima: Paraiso com 1 equipamento(s) fora de operacao.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+         2 
+UBS Pinheiros: MODERADO (indice 58) | Estacao mais proxima: Butanta com todos os equipamentos funcionando.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+         3 
+Mercado Municipal de Sao Paulo: AGITADO (indice 28) | Estacao mais proxima: Luz com todos os equipamentos funcionando.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+
+        ID
+----------
+POSSO_IR_AGORA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         4 
+Terminal Parque Dom Pedro II: AGITADO (indice 19) | Estacao mais proxima: Se com 1 equipamento(s) fora de operacao.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+         5 
+Parque Ibirapuera: CALMO (indice 72) | Estacao mais proxima: Paraiso com 1 equipamento(s) fora de operacao.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+         6 
+Poupatempo Se: MODERADO (indice 63) | Estacao mais proxima: Se com 1 equipamento(s) fora de operacao.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+
+6 linhas selecionadas. 
+
+T21 - OK, erro esperado: ORA-02290: restrição de verificação (RM563009.CK_AVAL_RUIDO) violada
+
+
+Procedimento PL/SQL concluído com sucesso.
+
+Rollback concluído.
+Testes concluidos. Alteracoes desfeitas com ROLLBACK.
+
+==================== PARTE 7 - RELATORIOS (EQUIVALENTES AOS DO MONGODB) ====================
+RELATORIO 1 - Locais de saude com indice de calma >= 70
+
+ ORACLE_ID NOME                                                                                                                     CATEGORIA            INDICE_CALMA
+---------- ------------------------------------------------------------------------------------------------------------------------ -------------------- ------------
+         1 UBS Vila Mariana                                                                                                         SAUDE                          92
+
+RELATORIO 2 - Estacoes com algum equipamento parado
+
+ ORACLE_ID NOME                                                                                                                     LINHA                                                       
+---------- ------------------------------------------------------------------------------------------------------------------------ ------------------------------------------------------------
+         1 Se                                                                                                                       1-Azul / 3-Vermelha                                         
+         3 Luz                                                                                                                      1-Azul / 4-Amarela                                          
+
+RELATORIO 2 (detalhe) - equipamentos parados
+
+ESTACAO                                                                                                                  EQUIPAMENTO_ID TIPO                 LOCALIZACAO                                                                                                                                            DESDE           
+------------------------------------------------------------------------------------------------------------------------ -------------- -------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------ ----------------
+Se                                                                                                                                    1 ELEVADOR             Praca da Se -> mezanino                                                                                                                                03/11/2026 07:45
+Luz                                                                                                                                   7 ELEVADOR             Acesso Rua Jose Paulino -> mezanino                                                                                                                    04/11/2026 17:30
+Luz                                                                                                                                   8 ESCADA_ROLANTE       Baldeacao Linha 1 -> Linha 4                                                                                                                           04/11/2026 17:35
+
+RELATORIO 3 - Media sensorial por categoria (agregacao)
+
+CATEGORIA            MEDIA_RUIDO MEDIA_LUMINOSIDADE MEDIA_LOTACAO QTD_AVALIACOES
+-------------------- ----------- ------------------ ------------- --------------
+LAZER                          2               1,67          2,67              3
+MERCADO                        4                  3          4,67              3
+SAUDE                          2               1,75          2,25              8
+SERVICO_PUBLICO                3                  2             4              3
+TRANSPORTE                  4,67                  3             5              3
+
+RELATORIO 4 (bonus) - Percepcao media por faixa de horario
+
+FAIXA_INICIO FAIXA           PERCEPCAO_MEDIA QTD_AVALIACOES
+------------ --------------- --------------- --------------
+           6 MANHA (06h-11h)             2,7             10
+          12 TARDE (12h-17h)             2,5              8
+          18 NOITE (18h-23h)            4,33              2
+
+CORRESPONDENCIA - contagens
+
+  USUARIOS     LOCAIS AVALIACOES   ESTACOES EQUIPAMENTOS
+---------- ---------- ---------- ---------- ------------
+         5          6         20          5           12
+
+
+==================== FIM: todas as partes executadas ====================

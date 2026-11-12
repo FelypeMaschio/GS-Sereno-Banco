@@ -1,0 +1,107 @@
+===============================================================================
+ SERENO - ACESSIBILIDADE URBANA FISICA E SENSORIAL
+ GLOBAL SOLUTION FIAP 2026 - 2o SEMESTRE - CITIZENTECH (AREA CIDADES)
+ DISCIPLINA: MASTERING RELATIONAL AND NON-RELATIONAL DATABASE
+===============================================================================
+
+INTEGRANTES (ordem alfabetica) - TURMA 2TDSPI
+
+   RM565269 - Eduardo Augusto de Oliveira Souza ......... 2TDSPI
+   RM564673 - Fellipe Costa de Oliveira ................. 2TDSPI
+   RM563009 - Felype Ferreira Maschio ................... 2TDSPI
+   RM563304 - Gustavo Vieira de Matos ................... 2TDSPI
+   RM562156 - Pedro Henrique dos Santos Costa ........... 2TDSPI
+
+
+===============================================================================
+ REPOSITORIO
+===============================================================================
+
+   https://github.com/FelypeMaschio/GS-Sereno-Banco
+
+
+===============================================================================
+ ORGANIZACAO DOS ARQUIVOS
+===============================================================================
+
+1_Oracle/
+
+   Sereno_Oracle_Completo.sql
+      Arquivo unico com todo o codigo Oracle. Executar de cima para baixo,
+      em uma unica passada (F5 no SQL Developer). Nao requer nenhum ajuste
+      previo: comeca removendo o que existir e pode ser executado quantas
+      vezes for preciso.
+
+         PARTE 1 - DDL: 7 tabelas SER_*, PK, FK, CHECK, UNIQUE e indices
+         PARTE 2 - dados de teste (os mesmos carregados no MongoDB)
+         PARTE 3 - pacotes PKG_CALMARIA e PKG_ACESSIBILIDADE
+                   (2 funcoes, 2 procedimentos, excecoes nomeadas)
+         PARTE 4 - gatilhos TRG_AUD_AVALIACAO (auditoria) e
+                   TRG_REPORTE_ATUALIZA_STATUS
+         PARTE 5 - blocos anonimos (cursor; IF + LOOP)
+         PARTE 6 - testes de sucesso e de erro (termina com ROLLBACK)
+         PARTE 7 - relatorios equivalentes aos do MongoDB
+
+   Modelo_Logico.pdf
+      Modelo logico, gerado no SQL Developer Data Modeler (notacao Barker).
+
+   Modelo_Relacional.pdf
+      Modelo relacional, com tipagem Oracle, chaves e indices das 7 tabelas.
+
+   saida_execucao_1.txt / saida_execucao_2.txt
+      Saida completa de duas execucoes seguidas do arquivo unico, sem erros.
+
+
+2_MongoDB/
+
+   1_estrutura_collections.js
+      use('sereno'), criacao das collections usuarios, locais e estacoes
+      com schema validation ($jsonSchema) e indices.
+
+   2_carga_documentos.js
+      insertMany de 16 documentos (5 usuarios, 6 locais, 5 estacoes), com
+      os mesmos dados do Oracle. Cada documento guarda o oracleId da linha
+      de origem.
+
+   3_relatorios_comparacao.js
+      Os 3 relatorios (find, find em array incorporado e aggregate com
+      $unwind + $group), um relatorio bonus com $bucket, um $lookup e a
+      conferencia das contagens com o Oracle.
+
+      MODELAGEM ADOTADA
+
+         usuarios ... documento proprio, REFERENCIADO por usuarioId: e
+                      compartilhado por avaliacoes e reportes e muda pouco.
+                      A senha (hash) nao e migrada.
+         locais ..... avaliacoes INCORPORADAS: sempre lidas junto com o
+                      local e em quantidade limitada.
+         estacoes ... equipamentos INCORPORADOS, com os 5 ultimos reportes
+                      de cada um (padrao subset), para o documento nao
+                      crescer sem limite.
+         SER_AUDITORIA nao foi migrada: e controle interno do Oracle.
+
+
+3_Documentacao/
+
+   Documentacao_Sereno.pdf
+      Problema CitizenTech e ODS, modelo relacional, objetos PL/SQL, mapa
+      relacional -> documental, os relatorios lado a lado (Oracle x
+      MongoDB) e as evidencias de execucao.
+
+
+===============================================================================
+ ORDEM DE EXECUCAO
+===============================================================================
+
+   1. Oracle:  1_Oracle/Sereno_Oracle_Completo.sql  (F5 no SQL Developer)
+
+   2. MongoDB: mongosh --file 2_MongoDB/1_estrutura_collections.js
+               mongosh --file 2_MongoDB/2_carga_documentos.js
+               mongosh --file 2_MongoDB/3_relatorios_comparacao.js
+
+      (No MongoDB Compass: abrir o shell >_MONGOSH, colar o conteudo de cada
+       arquivo e apertar Enter, na mesma ordem.)
+
+   Usuarios de teste: senha Sereno@2026 (hash BCrypt custo 10).
+
+===============================================================================
